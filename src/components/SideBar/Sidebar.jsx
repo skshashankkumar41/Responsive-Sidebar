@@ -1,22 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as s from "./Sidebar.styles";
 
 const Sidebar = (props) => {
   const { sidebarHeader, menuItems } = props;
 
+  const [selected, setSelectedMenuItem] = useState(menuItems[0].name);
+  const [isSidebarOpen, setSidebarState] = useState(true);
+  const [header, setHeader] = useState(sidebarHeader.fullName);
+
+  useEffect(() => {
+    isSidebarOpen
+      ? setTimeout(() => setHeader(sidebarHeader.fullName), 200)
+      : setHeader(sidebarHeader.shortName);
+  }, [isSidebarOpen, sidebarHeader]);
+
+  const handleMenuItemClick = (name) => {
+    setSelectedMenuItem(name);
+  };
+
   const menuItemsJSX = menuItems.map((item, index) => {
+    const isItemSelected = selected === item.name;
     return (
-      <s.MenuItem key={index}>
-        <s.MenuIcon>{item.icon}</s.MenuIcon>
-        <s.MenuText>{item.name}</s.MenuText>
+      <s.MenuItem
+        key={index}
+        selected={isItemSelected}
+        isSidebarOpen={isSidebarOpen}
+        onClick={() => handleMenuItemClick(item.name)}
+      >
+        <s.MenuIcon isSidebarOpen={isSidebarOpen}>{item.icon}</s.MenuIcon>
+        <s.MenuText isSidebarOpen={isSidebarOpen}>{item.name}</s.MenuText>
       </s.MenuItem>
     );
   });
 
   return (
-    <s.SidebarContainer>
-      <s.SidebarHeader>{sidebarHeader}</s.SidebarHeader>
+    <s.SidebarContainer isSidebarOpen={isSidebarOpen}>
+      <s.SidebarHeader>{header}</s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
+      <s.TogglerContainer onClick={() => setSidebarState(!isSidebarOpen)}>
+        <s.Toggler></s.Toggler>
+      </s.TogglerContainer>
     </s.SidebarContainer>
   );
 };

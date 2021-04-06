@@ -10,7 +10,10 @@ import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ContactsIcon from "@material-ui/icons/Contacts";
 
 function App() {
-  const sidebarHeader = "Travelling Mate";
+  const sidebarHeader = {
+    fullName: "Travel Mate",
+    shortName: "TM",
+  };
 
   const menuItems = [
     { name: "Home", to: "/", icon: <HomeIcon></HomeIcon>, subMenuItem: [] },
