@@ -18,8 +18,14 @@ export const SidebarHeader = styled.h3`
 export const MenuItemContainer = styled.div``;
 
 export const MenuItem = styled.div`
-  text-align: center;
   padding: 6px 20px;
+  display: flex;
   font-weight: 600;
   color: rgba(19, 15, 64);
+`;
+
+export const MenuText = styled.div``;
+
+export const MenuIcon = styled.div`
+  padding-right: 20px;
 `;

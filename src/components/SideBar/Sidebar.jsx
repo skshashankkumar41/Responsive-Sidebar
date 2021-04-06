@@ -5,7 +5,12 @@ const Sidebar = (props) => {
   const { sidebarHeader, menuItems } = props;
 
   const menuItemsJSX = menuItems.map((item, index) => {
-    return <s.MenuItem key={index}>{item.name}</s.MenuItem>;
+    return (
+      <s.MenuItem key={index}>
+        <s.MenuIcon>{item.icon}</s.MenuIcon>
+        <s.MenuText>{item.name}</s.MenuText>
+      </s.MenuItem>
+    );
   });
 
   return (
