@@ -34,22 +34,29 @@ const Sidebar = (props) => {
   const menuItemsJSX = menuItems.map((item, index) => {
     const isItemSelected = selected === item.name;
     const hasSubMenu = item.subMenuItem.length !== 0;
+    const subMenuJSX = item.subMenuItem.map((subMenu, subMenuIndex) => {
+      return <s.SubMenuItem key={subMenuIndex}>{subMenu.name}</s.SubMenuItem>;
+    });
 
     return (
-      <s.MenuItem
-        key={index}
-        selected={isItemSelected}
-        isSidebarOpen={isSidebarOpen}
-        onClick={() => handleMenuItemClick(item.name)}
-      >
-        <s.MenuIcon isSidebarOpen={isSidebarOpen}>{item.icon}</s.MenuIcon>
-        <s.MenuText isSidebarOpen={isSidebarOpen}>{item.name}</s.MenuText>
-        {hasSubMenu && (
-          <s.DropdownIcon>
-            <ArrowDropDownIcon></ArrowDropDownIcon>
-          </s.DropdownIcon>
-        )}
-      </s.MenuItem>
+      <s.ItemContainer key={index}>
+        <s.MenuItem
+          selected={isItemSelected}
+          isSidebarOpen={isSidebarOpen}
+          onClick={() => handleMenuItemClick(item.name)}
+        >
+          <s.MenuIcon isSidebarOpen={isSidebarOpen}>{item.icon}</s.MenuIcon>
+          <s.MenuText isSidebarOpen={isSidebarOpen}>{item.name}</s.MenuText>
+          {hasSubMenu && (
+            <s.DropdownIcon>
+              <ArrowDropDownIcon></ArrowDropDownIcon>
+            </s.DropdownIcon>
+          )}
+        </s.MenuItem>
+        <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen}>
+          {subMenuJSX}
+        </s.SubMenuItemContainer>
+      </s.ItemContainer>
     );
   });
 

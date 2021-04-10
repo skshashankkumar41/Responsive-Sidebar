@@ -22,6 +22,8 @@ export const SidebarHeader = styled.h3`
 
 export const MenuItemContainer = styled.div``;
 
+export const ItemContainer = styled.div``;
+
 export const MenuItem = styled.div`
   ${(p) =>
     !p.isSidebarOpen &&
@@ -34,11 +36,27 @@ export const MenuItem = styled.div`
   white-space: nowrap;
   color: ${(p) => (p.selected ? "rgba(255,255,255)" : "rgba(19, 15, 64)")};
   display: flex;
+  transition: 0.2s ease-in all;
 
   &:hover {
     color: rgba(255, 255, 255);
     transition: 0.1s ease-in all;
     cursor: pointer;
+  }
+`;
+
+export const SubMenuItemContainer = styled.div`
+  font-size: 14px;
+
+  ${(p) => p.isSidebarOpen && "padding-left: 20%;"}
+  ${(p) => !p.isSidebarOpen && "text-align:center"}
+`;
+
+export const SubMenuItem = styled.div`
+  color: rgba(25, 15, 80);
+
+  &:hover {
+    color: rgba(255, 255, 255);
   }
 `;
 
