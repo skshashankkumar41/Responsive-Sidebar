@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as s from "./Sidebar.styles";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 const Sidebar = (props) => {
   const { sidebarHeader, menuItems } = props;
@@ -32,6 +33,8 @@ const Sidebar = (props) => {
 
   const menuItemsJSX = menuItems.map((item, index) => {
     const isItemSelected = selected === item.name;
+    const hasSubMenu = item.subMenuItem.length !== 0;
+
     return (
       <s.MenuItem
         key={index}
@@ -41,6 +44,11 @@ const Sidebar = (props) => {
       >
         <s.MenuIcon isSidebarOpen={isSidebarOpen}>{item.icon}</s.MenuIcon>
         <s.MenuText isSidebarOpen={isSidebarOpen}>{item.name}</s.MenuText>
+        {hasSubMenu && (
+          <s.DropdownIcon>
+            <ArrowDropDownIcon></ArrowDropDownIcon>
+          </s.DropdownIcon>
+        )}
       </s.MenuItem>
     );
   });

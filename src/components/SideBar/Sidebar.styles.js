@@ -54,6 +54,10 @@ export const MenuIcon = styled.div`
   `};
 `;
 
+export const DropdownIcon = styled.div`
+  padding-left: 3px;
+`;
+
 export const TogglerContainer = styled.div`
   position: absolute;
   width: 30%;
