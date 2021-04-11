@@ -48,7 +48,7 @@ export const MenuItem = styled.div`
 export const SubMenuItemContainer = styled.div`
   font-size: 14px;
 
-  ${(p) => p.isSidebarOpen && "padding-left: 20%;"}
+  ${(p) => p.isSidebarOpen && "padding-left: 25%;"}
   ${(p) => !p.isSidebarOpen && "text-align:center"}
 `;
 
@@ -74,6 +74,7 @@ export const MenuIcon = styled.div`
 
 export const DropdownIcon = styled.div`
   padding-left: 3px;
+  transition: 0.4s;
 `;
 
 export const TogglerContainer = styled.div`
