@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as s from "./Sidebar.styles";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Sidebar = (props) => {
   const { sidebarHeader, menuItems } = props;
@@ -83,11 +84,20 @@ const Sidebar = (props) => {
             </s.DropdownIcon>
           )}
         </s.MenuItem>
-        {hasSubMenu && isOpen && (
-          <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen}>
-            {subMenuJSX}
-          </s.SubMenuItemContainer>
-        )}
+        <AnimatePresence>
+          {hasSubMenu && isOpen && (
+            <motion.nav
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              exit={{ opacity: 0, x: -30 }}
+            >
+              <s.SubMenuItemContainer isSidebarOpen={isSidebarOpen}>
+                {subMenuJSX}
+              </s.SubMenuItemContainer>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </s.ItemContainer>
     );
   });
