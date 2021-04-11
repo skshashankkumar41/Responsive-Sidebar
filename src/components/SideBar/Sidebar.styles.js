@@ -47,7 +47,7 @@ export const MenuItem = styled.div`
 
 export const SubMenuItemContainer = styled.div`
   font-size: 14px;
-  margin-top: -5px;
+  margin-top: -2px;
   ${(p) => p.isSidebarOpen && "padding-left: 25%;"}
   ${(p) => !p.isSidebarOpen && "text-align:center"};
 `;
