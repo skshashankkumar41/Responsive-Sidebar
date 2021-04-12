@@ -3,6 +3,7 @@ import * as s from "./Sidebar.styles";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {
   const { sidebarHeader, menuItems } = props;
@@ -66,24 +67,26 @@ const Sidebar = (props) => {
 
     return (
       <s.ItemContainer key={index}>
-        <s.MenuItem
-          selected={isItemSelected}
-          isSidebarOpen={isSidebarOpen}
-          onClick={() => handleMenuItemClick(item.name, index)}
-        >
-          <s.MenuIcon isSidebarOpen={isSidebarOpen}>{item.icon}</s.MenuIcon>
-          <s.MenuText isSidebarOpen={isSidebarOpen}>{item.name}</s.MenuText>
-          {hasSubMenu && !isOpen && (
-            <s.DropdownIcon>
-              <ArrowDropDownIcon></ArrowDropDownIcon>
-            </s.DropdownIcon>
-          )}
-          {hasSubMenu && isOpen && (
-            <s.DropdownIcon>
-              <ArrowDropUpIcon></ArrowDropUpIcon>
-            </s.DropdownIcon>
-          )}
-        </s.MenuItem>
+        <Link to={item.to} style={{ textDecoration: "none" }}>
+          <s.MenuItem
+            selected={isItemSelected}
+            isSidebarOpen={isSidebarOpen}
+            onClick={() => handleMenuItemClick(item.name, index)}
+          >
+            <s.MenuIcon isSidebarOpen={isSidebarOpen}>{item.icon}</s.MenuIcon>
+            <s.MenuText isSidebarOpen={isSidebarOpen}>{item.name}</s.MenuText>
+            {hasSubMenu && !isOpen && (
+              <s.DropdownIcon>
+                <ArrowDropDownIcon></ArrowDropDownIcon>
+              </s.DropdownIcon>
+            )}
+            {hasSubMenu && isOpen && (
+              <s.DropdownIcon>
+                <ArrowDropUpIcon></ArrowDropUpIcon>
+              </s.DropdownIcon>
+            )}
+          </s.MenuItem>
+        </Link>
         <AnimatePresence>
           {hasSubMenu && isOpen && (
             <motion.nav
