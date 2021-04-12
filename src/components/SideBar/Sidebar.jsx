@@ -62,7 +62,15 @@ const Sidebar = (props) => {
     const hasSubMenu = item.subMenuItem.length !== 0;
     const isOpen = subMenusStates[index] ? subMenusStates[index].isOpen : null;
     const subMenuJSX = item.subMenuItem.map((subMenu, subMenuIndex) => {
-      return <s.SubMenuItem key={subMenuIndex}>{subMenu.name}</s.SubMenuItem>;
+      return (
+        <Link
+          to={`${item.to}${subMenu.to}`}
+          key={subMenuIndex}
+          style={{ textDecoration: "none" }}
+        >
+          <s.SubMenuItem>{subMenu.name}</s.SubMenuItem>
+        </Link>
+      );
     });
 
     return (
