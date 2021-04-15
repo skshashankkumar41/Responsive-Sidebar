@@ -2,10 +2,11 @@ import styled from "@emotion/styled";
 
 export const CountryContainer = styled.div`
   width: 80%;
-  height: 200px;
-  margin: 20px auto 0;
-  display: flex;
-  justify-content: space-between;
+  /* height: 200px; */
+  /* margin: 20px auto 0; */
+  /* display: flex;
+  justify-content: space-between; */
+  padding: 100px;
   align-items: center;
 `;
 
@@ -18,6 +19,4 @@ export const CountryImage = styled.img`
   background-position: center center;
 `;
 
-export const CountryDesecription = styled.h1`
-  width: 45%;
-`;
+export const CountryDesecription = styled.h1``;
