@@ -2,10 +2,6 @@ import styled from "@emotion/styled";
 
 export const CountryContainer = styled.div`
   width: 80%;
-  /* height: 200px; */
-  /* margin: 20px auto 0; */
-  /* display: flex;
-  justify-content: space-between; */
   padding: 100px;
   align-items: center;
 `;
