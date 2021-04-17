@@ -69,7 +69,7 @@ const Sidebar = (props) => {
     const isOpen = subMenusStates[index] ? subMenusStates[index].isOpen : null;
     const subMenuJSX = item.subMenuItem.map((subMenu, subMenuIndex) => {
       const isSubMenuSelected =
-        subMenusStates[index]["selected"] === subMenuIndex;
+        subMenusStates[index]?.selected === subMenuIndex;
       return (
         <Link
           to={`${item.to}${subMenu.to}`}

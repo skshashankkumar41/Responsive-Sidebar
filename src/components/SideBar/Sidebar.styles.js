@@ -54,7 +54,8 @@ export const SubMenuItemContainer = styled.div`
 
 export const SubMenuItem = styled.div`
   color: ${(p) => (p.selected ? "rgba(255, 255, 255)" : "rgba(25, 15, 80)")};
-
+  ${(p) => p.selected && "font-weight:bold; letter-spacing:2px;"};
+  transition: 0.2s;
   &:hover {
     color: rgba(255, 255, 255);
   }
