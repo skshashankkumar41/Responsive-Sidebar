@@ -54,6 +54,12 @@ const Sidebar = (props) => {
     if (subMenusStates.hasOwnProperty(index)) {
       subMenusCopy[index]["isOpen"] = !subMenusStates[index]["isOpen"];
       setSubMenus(subMenusCopy);
+    } else {
+      for (let item in subMenusCopy) {
+        subMenusCopy[item]["isOpen"] = false;
+        subMenusCopy[item]["selected"] = null;
+      }
+      setSubMenus(subMenusCopy);
     }
   };
 
